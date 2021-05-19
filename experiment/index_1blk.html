@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://uf-splab.github.io/jsPsychSheet/jspsych-6.3.0/jspsych.js"></script>
+    <script src="https://uf-splab.github.io/jsPsychSheet/jspsych-6.3.0/plugins/jspsych-audio-button-response.js"></script>
+    <script src="https://uf-splab.github.io/jsPsychSheet/jspsych-6.3.0/plugins/jspsych-preload.js"></script>
+    <script src="https://uf-splab.github.io/jsPsychSheet/jspsych-6.3.0/plugins/jspsych-html-button-response.js"></script>
+
+    <link rel="stylesheet" href="https://uf-splab.github.io/jsPsychSheet/jspsych-6.3.0/css/jspsych.css">
+    
+    <!-- jsPsychSheet library -->
+    <base target="_top">
+    <script src="https://uf-splab.github.io/jsPsychSheet/jspsychsheet.js"></script>
+    <link rel="stylesheet" href="https://uf-splab.github.io/jsPsychSheet/jspsychsheet.css">
+  </head>
+  <body></body>
+  <script>
+
+  var timeline = [];
+
+  timeline.push({
+    type: 'preload',
+    auto_preload: true
+  });
+
+  timeline.push({
+    type: 'html-button-response',
+    stimulus: '<div style="max-width:600px;"><p>Some browsers now require the user to interact with a page before it can play audio. '+
+    'Clicking the button below counts as an interaction.</p><p>Be aware of this when planning audio experiments if '+
+    'you want the first trial to include audio.</p></div>',
+    choices: ['Continue']
+  });
+
+  var trial = {
+    type: 'audio-button-response',
+    stimulus:  jsPsych.timelineVariable('sound'),
+    choices: [
+    'https://uf-splab.github.io/jsPsychSheet/experiment/img/SAM_ac_5.jpg',
+    'https://uf-splab.github.io/jsPsychSheet/experiment/img/SAM_ac_4.jpg',
+    'https://uf-splab.github.io/jsPsychSheet/experiment/img/SAM_ac_3.jpg',
+    'https://uf-splab.github.io/jsPsychSheet/experiment/img/SAM_ac_2.jpg',
+    'https://uf-splab.github.io/jsPsychSheet/experiment/img/SAM_ac_1.jpg', ],
+    button_html: '<div style="max-width:500px;"><img src=" %choice%";style= "width:50px; height:50px;"></img></div>',
+    prompt: "<p><span>aroused</span><span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span><span>calm</span></p>"
+  }
+
+
+    timeline.push({
+    timeline: [trial],
+    timeline_variables: [ 
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/85909__mwmarsh__drinking-in-big-gulps_cut.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/267425__washout__long-slurp-swallow_cut.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/av_airraid_624.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/av_alarm_715.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/nt_chickens_132.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/nt_countrynight_171.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/pl_sportscrowd_352.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/pl_thunderstorm_602.wav' }
+      ],
+    randomize_order: true
+  });
+
+
+ /*  timeline.push({
+    timeline: [trial],
+    timeline_variables: [ 
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/85909__mwmarsh__drinking-in-big-gulps_cut.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/87565__sgak__gulps_cut.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/94807__mwhitcomb83__slurping-swallowing-and-ahh_cut.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/169907__qubodup__eating-oatmeal_cut.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/187258__jonnyhoff91__gum_cut.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/210426__qubodup__eating-with-open-mouth_cut.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/212732__taira-komori__noodles1_cut.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/212737__taira-komori__eating-crisps2_cut.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/234237__productionnow__eating-juicy-meat_cut.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/241951__dspena__chewing-cookies_cut.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/267425__washout__long-slurp-swallow_cut.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/326337__charlenez__slurping_cut.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/327805__fluffayfish__sipping-straw-variations_cut.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/365705__biancabothapure__eating-popcorn_cut.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/369293__georgisound__drinking-water_cut.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/382671__bbrocer__wet-sloppy-eating-2_cut.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/404691__chestnutjam__crunchy-cabbage-bites-chewing-retarded-extra_cut.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/405327__drotzruhn__eating-tomato_cut.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/408547__nomfundo-k__slurping_cut.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/411596__omgbong__eating-an-apple-02_cut.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/445523__180007__milkshake_cut.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/457732__shelbyshark__eatingapickle_cut.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/488578__sirtmoney__slurping-noodles_cut.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/av_airraid_624.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/av_alarm_715.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/av_alarmclock_709.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/av_attack4_281.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/av_busysignal_703.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/av_crash_732.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/av_dentistdrill_719.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/av_electricity_910.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/av_enginefailure_502.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/av_fight2_282.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/av_fight3_283.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/av_glassbreak_730.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/av_growl1_106.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/av_growl2_133.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/av_injury_423.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/av_planecrash_501.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/av_siren1_711.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/av_siren2_714.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/av_sirens_713.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/av_womencrying_296.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/nt_cattle_114.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/nt_chickens_132.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/nt_countrynight_171.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/nt_cows_113.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/nt_crowd5_368.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/nt_dog_107.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/nt_fan_701.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/nt_helicopter1_403.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/nt_lawnmower_376.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/nt_night_170.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/nt_paint_373.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/nt_panting_104.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/nt_phone1_704.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/nt_phone2_705.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/nt_radio_723.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/nt_rain1_627.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/nt_rain2_698.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/nt_sink_374.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/nt_toilet_700.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/nt_train_425.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/nt_typewriter_322.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/pl_applause1_351.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/pl_baby_110.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/pl_baseball_353.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/pl_bongos_817.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/pl_boylaugh_220.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/pl_brook_172.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/pl_casino1_366.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/pl_casino2_367.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/pl_choir_812.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/pl_harp_809.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/pl_laughing_226.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/pl_seagull_150.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/pl_slotmachine2_717.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/pl_sodafizz_725.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/pl_sportscrowd_352.wav' },
+      { sound: 'https://uf-splab.github.io/jsPsychSheet/experiment/sound/pl_thunderstorm_602.wav' }
+    ],
+    randomize_order: true
+  }); */
+
+
+  jsPsych.init({
+    timeline: timeline,
+    show_progress_bar: true,
+    on_finish: function() {
+         jsPsychSheet.uploadData(jsPsych.data.get().csv());
+    }
+    // on_finish: function(){jsPsych.data.displayData();}
+  });
+ 
+  </script>
+</html>
